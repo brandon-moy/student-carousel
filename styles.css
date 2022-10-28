@@ -1,0 +1,142 @@
+html {
+  background-image: url("images/background.jpg");
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+.title-image {
+  display: block;
+  margin: auto;
+  width: 40%;
+  padding-top: 2rem;
+}
+
+.title-text {
+  color: white;
+  text-align: center;
+  margin: 0;
+}
+
+.scene {
+  margin: 20vh auto 0;
+  width: 210px;
+  height: 140px;
+  position: relative;
+  perspective: 1000px;
+}
+
+.student-name {
+  text-align: center;
+  color: white;
+  font-size: 1rem;
+  padding-top: 0.5rem;
+  margin: 0;
+}
+
+.carousel {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+  animation: 30s infinite normal linear rotate;
+}
+
+.card {
+  position: absolute;
+  width: 120px;
+  height: 190px;
+  left: 10px;
+  top: 10px;
+  border: 3px solid white;
+  border-radius: 0.25rem;
+  transform-style: preserve-3d;
+}
+
+.card:hover {
+  cursor: pointer;
+}
+
+.front {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+  background-color: #303b43;
+}
+
+.back {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+  background-color: #303b43;
+}
+
+.logo {
+  width: 100%;
+  padding-top: 2.5rem;
+}
+
+.student-image {
+  padding-top: 1rem;
+  width: 100%;
+}
+
+.card:nth-child(1) {
+  transform: rotateY(0deg) translateZ(392px);
+}
+
+.card:nth-child(2) {
+  transform: rotateY(30deg) translateZ(392px);
+}
+
+.card:nth-child(3) {
+  transform: rotateY(60deg) translateZ(392px);
+}
+
+.card:nth-child(4) {
+  transform: rotateY(90deg) translateZ(392px);
+}
+
+.card:nth-child(5) {
+  transform: rotateY(120deg) translateZ(392px);
+}
+
+.card:nth-child(6) {
+  transform: rotateY(150deg) translateZ(392px);
+}
+
+.card:nth-child(7) {
+  transform: rotateY(180deg) translateZ(392px);
+}
+
+.card:nth-child(8) {
+  transform: rotateY(210deg) translateZ(392px);
+}
+
+.card:nth-child(9) {
+  transform: rotateY(240deg) translateZ(392px);
+}
+
+.card:nth-child(10) {
+  transform: rotateY(270deg) translateZ(392px);
+}
+
+.card:nth-child(11) {
+  transform: rotateY(300deg) translateZ(392px);
+}
+
+.card:nth-child(12) {
+  transform: rotateY(330deg) translateZ(392px);
+}
+
+@keyframes rotate {
+  from {
+    transform: rotateY(0deg);
+  }
+
+  to {
+    transform: rotateY(360deg);
+  }
+}
