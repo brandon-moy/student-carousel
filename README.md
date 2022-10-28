@@ -19,13 +19,14 @@ Babel
 Visitors can see my classmates
 Visitors can click my classmate's card to go to their LinkedIn profile.
 
-#Planned Features
+# Planned Features
 Cards will have a short description on the back
 Cards will have a ribbon banner to redirect to LinkedIn
+Cards will have an icon to redirect to GitHub
 Clicking a card will stop the cycle and flip the card
 Clicking on a flipped card will flip back to front facing and restart the cycle
 
-#Previews
+# Previews
 
 ![spinn](https://user-images.githubusercontent.com/109567499/198716165-a12783b9-a721-43ed-b85a-885f1d878684.gif)
 
