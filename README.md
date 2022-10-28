@@ -2,7 +2,7 @@
 A three-dimensional carousel displaying the 0822 cohort students.
 
 # Why I built this?
-After discovering CSS Art and Webpack's rotating cubes I wanted to improve my skills with CSS as well as current technologies being learned at the bootcamp LearningFuze that I'm attending.
+After discovering CSS Art and recreating Webpack's rotating cubes I wanted to improve my skills with CSS as well as current technologies being learned at the bootcamp LearningFuze that I'm attending.
 
 My theming my carousel around my fellow cohortmates it allows me to both create something that is visually apealling as well as a feature to be able to learn more about my classmates.
 
