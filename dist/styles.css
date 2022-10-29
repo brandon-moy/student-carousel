@@ -38,7 +38,8 @@ html {
   position: absolute;
   transform-style: preserve-3d;
   transition: transform 1s;
-  animation: 30s infinite normal linear rotate;
+
+  /* animation: 30s infinite normal linear rotate; */
 }
 
 .card {
@@ -50,10 +51,8 @@ html {
   border: 3px solid white;
   border-radius: 0.25rem;
   transform-style: preserve-3d;
-}
-
-.card:hover {
-  cursor: pointer;
+  transform-origin: center right;
+  transition: transform 1s;
 }
 
 .front {
@@ -83,8 +82,31 @@ html {
   width: 100%;
 }
 
+.linkedin-icon {
+  padding-top: 3rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  width: 30%;
+}
+
+.github-icon {
+  width: 30%;
+  background-color: white;
+  border-radius: 2rem;
+}
+
+.front:hover,
+.linkedin-icon:hover,
+.github-icon:hover {
+  cursor: pointer;
+}
+
 .card:nth-child(1) {
-  transform: rotateY(0deg) translateZ(392px);
+  transform: rotateY(180deg) translateZ(-392px) translateX(100%);
+}
+
+.card:nth-child(1).is-flipped {
+  transform: rotateY(180deg) translateZ(392px);
 }
 
 .card:nth-child(2) {
