@@ -8,12 +8,8 @@ export default class Cards extends React.Component {
   }
 
   handleClick(event) {
-    // const id = event.target.closest('.card').id;
-    // const person = this.state.links.filter(links => links.name === id);
-    // window.open(person[0].link);
-    const card = event.target.closest('.card');
-    // eslint-disable-next-line no-console
-    console.log(card);
+    const card = event.target.closest('.card-rotate');
+    card.classList.toggle('is-flipped');
   }
 
   componentDidMount() {
@@ -28,19 +24,21 @@ export default class Cards extends React.Component {
           {
             this.props.cards.map(image => {
               return (
-                <div className="card" id={image.name} key={image.number} onClick={this.handleClick}>
-                  <div className="front">
-                    <img className="student-image" src={image.front}></img>
-                    <h1 className="student-name">{image.name}</h1>
-                  </div>
-                  <div className="back">
-                    <p>This is some text</p>
-                    <a className="linkedin-link" href={image.linked}>
-                      <img className="linkedin-icon" src={image.linkIcon}></img>
-                    </a>
-                    <a className="github-link" href={image.github}>
-                      <img className="github-icon" src={image.githubIcon}></img>
-                    </a>
+                <div className="card" id={image.name} key={image.number}>
+                  <div className='card-rotate' id={`a${image.number}`}>
+                    <div className="front" onClick={this.handleClick}>
+                      <img className="student-image" src={image.front}></img>
+                      <h1 className="student-name">{image.name}</h1>
+                    </div>
+                    <div className="back" onClick={this.handleClick}>
+                      <p>This is some text</p>
+                      <a className="linkedin-link" href={image.linked}>
+                        <img className="linkedin-icon" src={image.linkIcon}></img>
+                      </a>
+                      <a className="github-link" href={image.github}>
+                        <img className="github-icon" src={image.githubIcon}></img>
+                      </a>
+                    </div>
                   </div>
                 </div>
               );

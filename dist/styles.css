@@ -48,11 +48,22 @@ html {
   height: 190px;
   left: 10px;
   top: 10px;
+  transform-style: preserve-3d;
+}
+
+.card-rotate {
+  position: absolute;
+  width: 120px;
+  height: 190px;
   border: 3px solid white;
   border-radius: 0.25rem;
   transform-style: preserve-3d;
   transform-origin: center right;
   transition: transform 1s;
+}
+
+.card-rotate.is-flipped {
+  transform: rotateY(180deg) translateX(100%);
 }
 
 .front {
@@ -96,17 +107,14 @@ html {
 }
 
 .front:hover,
+.back:hover,
 .linkedin-icon:hover,
 .github-icon:hover {
   cursor: pointer;
 }
 
 .card:nth-child(1) {
-  transform: rotateY(180deg) translateZ(-392px) translateX(100%);
-}
-
-.card:nth-child(1).is-flipped {
-  transform: rotateY(180deg) translateZ(392px);
+  transform: rotateY(0deg) translateZ(392px);
 }
 
 .card:nth-child(2) {
