@@ -16,9 +16,10 @@ export default class Cards extends React.Component {
   }
 
   showFront(event) {
-    this.carouselCycle();
     const card = event.target.closest('.card-rotate');
+    if (!card.classList.contains('is-flipped')) return;
     card.classList.toggle('is-flipped');
+    this.carouselCycle();
   }
 
   carouselCycle() {
