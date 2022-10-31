@@ -95,9 +95,10 @@ html {
 }
 
 .student-image {
-  padding-top: 1rem;
+  margin-top: 1rem;
   width: 90%;
   border-radius: 50%;
+  border: 1px solid white;
 }
 
 .linkedin-icon {
