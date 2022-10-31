@@ -3,6 +3,12 @@ html {
   font-family: "Source Sans Pro", sans-serif;
 }
 
+.column-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .title-image {
   display: block;
   margin: auto;
@@ -81,18 +87,21 @@ html {
   background-color: #303b43;
 }
 
-.logo {
-  width: 100%;
-  padding-top: 2.5rem;
+.back-text {
+  color: white;
+  font-family: "Varela Round", sans-serif;
+  font-size: 0.5rem;
+  padding: 0.25rem;
 }
 
 .student-image {
   padding-top: 1rem;
-  width: 100%;
+  width: 90%;
+  border-radius: 50%;
 }
 
 .linkedin-icon {
-  padding-top: 3rem;
+  padding-top: 0.25rem;
   padding-left: 1rem;
   padding-right: 1rem;
   width: 30%;

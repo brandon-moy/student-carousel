@@ -45,13 +45,15 @@ export default class Cards extends React.Component {
             this.props.cards.map(image => {
               return (
                 <div className="card" id={image.name} key={image.number}>
-                  <div className='card-rotate' id={`a${image.number}`}>
-                    <div className="front" onClick={this.showBack}>
+                  <div className='card-rotate' id={image.number}>
+                    <div className="front column-center" onClick={this.showBack}>
                       <img className="student-image" src={image.front}></img>
                       <h1 className="student-name">{image.name}</h1>
                     </div>
                     <div className="back" onClick={this.showFront}>
-                      <p>This is some text</p>
+                      <p className="back-text">I&apos;m a Software Engineer in XYZ.</p>
+                      <p className="back-text">I started out doing XYZ and now I&apos;m learning about XYZ</p>
+                      <p className="back-text">I have a passion for something or the other. Let&apos;s conenct on linkedIn or checkout my GitHub!</p>
                       <a className="linkedin-link" href={image.linked}>
                         <img className="linkedin-icon" src={image.linkIcon}></img>
                       </a>
