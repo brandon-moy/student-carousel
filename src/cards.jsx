@@ -6,20 +6,23 @@ export default class Cards extends React.Component {
     this.showBack = this.showBack.bind(this);
     this.showFront = this.showFront.bind(this);
     this.carouselCycle = this.carouselCycle.bind(this);
-    this.state = { location: 0, intervalId: null };
+    this.rotationTransition = this.rotationTransition.bind(this);
+    this.state = { location: 1, intervalId: null };
   }
 
   showBack(event) {
-    clearInterval(this.state.intervalId);
+    // clearInterval(this.state.intervalId);
+    event.target.closest('.carousel').classList.toggle('rotating');
     const card = event.target.closest('.card-rotate');
     card.classList.toggle('is-flipped');
   }
 
   showFront(event) {
+    event.target.closest('.carousel').classList.toggle('rotating');
     const card = event.target.closest('.card-rotate');
     if (!card.classList.contains('is-flipped')) return;
     card.classList.toggle('is-flipped');
-    this.carouselCycle();
+    // this.carouselCycle();
   }
 
   carouselCycle() {
@@ -34,13 +37,28 @@ export default class Cards extends React.Component {
   }
 
   componentDidMount() {
-    this.carouselCycle();
+    // this.carouselCycle();
+    setTimeout(() => {
+      const $carousel = document.querySelector('.carousel');
+      $carousel.style.transform = 'rotateY(-30deg)';
+    }, 2000);
+  }
+
+  rotationTransition() {
+    const $cardRotate = document.querySelectorAll('.card-rotate');
+    const flippedCards = $cardRotate.filter(item => item.classList.contains('is-flipped'));
+    if (flippedCards === []) return;
+    const location = this.state.location + 1;
+    const amount = location * 30;
+    const $carousel = document.querySelector('.carousel');
+    $carousel.style.transform = 'rotateY(-' + amount + 'deg)';
+    this.setState({ location });
   }
 
   render() {
     return (
       <div className="scene">
-        <div className="carousel">
+        <div className="carousel rotating" onTransitionEnd={this.rotationTransition}>
           {
             this.props.cards.map(image => {
               return (
