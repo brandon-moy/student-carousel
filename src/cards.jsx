@@ -41,13 +41,18 @@ export default class Cards extends React.Component {
     setTimeout(() => {
       const $carousel = document.querySelector('.carousel');
       $carousel.style.transform = 'rotateY(-30deg)';
-    }, 2000);
+    }, 0);
   }
 
   rotationTransition() {
     const $cardRotate = document.querySelectorAll('.card-rotate');
-    const flippedCards = $cardRotate.filter(item => item.classList.contains('is-flipped'));
-    if (flippedCards === []) return;
+    let flippedCards = 0;
+    for (let i = 0; i < $cardRotate.length; i++) {
+      if ($cardRotate[i].classList.contains('is-flipped')) {
+        flippedCards++;
+      }
+    }
+    if (flippedCards > 0) return;
     const location = this.state.location + 1;
     const amount = location * 30;
     const $carousel = document.querySelector('.carousel');
@@ -67,11 +72,16 @@ export default class Cards extends React.Component {
                     <div className="front column-center" onClick={this.showBack}>
                       <img className="student-image" src={image.front}></img>
                       <h1 className="student-name">{image.name}</h1>
+                      <h1 className="city">
+                        <i className="fa-solid fa-location-dot"></i>
+                        {image.city}
+                      </h1>
                     </div>
                     <div className="back" onClick={this.showFront}>
-                      <p className="back-text">I&apos;m a Software Engineer in XYZ.</p>
-                      <p className="back-text">I started out doing XYZ and now I&apos;m learning about XYZ</p>
-                      <p className="back-text">I have a passion for something or the other. Let&apos;s conenct on linkedIn or checkout my GitHub!</p>
+                      <h3 className="project-name">{image.projectName}</h3>
+                      <a href={image.projectLink}>
+                        <img className="project-image" src={image.projectImage}></img>
+                      </a>
                       <a className="linkedin-link" href={image.linked}>
                         <img className="linkedin-icon" src={image.linkIcon}></img>
                       </a>
