@@ -3,35 +3,87 @@ import React from 'react';
 export default class Cards extends React.Component {
   constructor(props) {
     super(props);
-    this.handleClick = this.handleClick.bind(this);
-    this.state = { links: [] };
+    this.showBack = this.showBack.bind(this);
+    this.showFront = this.showFront.bind(this);
+    this.carouselRef = React.createRef();
+    this.carouselCycle = this.carouselCycle.bind(this);
+    this.rotationTransition = this.rotationTransition.bind(this);
+    this.state = { location: 1, intervalId: null };
   }
 
-  handleClick(event) {
-    const id = event.target.closest('.card').id;
-    const person = this.state.links.filter(links => links.name === id);
-    window.open(person[0].link);
+  showBack(event) {
+    this.carouselRef.current.classList.toggle('rotating');
+    const card = event.target.closest('.card-rotate');
+    card.classList.toggle('is-flipped');
+  }
+
+  showFront(event) {
+    this.carouselRef.current.classList.toggle('rotating');
+    const card = event.target.closest('.card-rotate');
+    if (!card.classList.contains('is-flipped')) return;
+    card.classList.toggle('is-flipped');
+  }
+
+  carouselCycle() {
+    const intervalId = setInterval(() => {
+      const location = this.state.location + 1;
+      const amount = location * 30;
+      this.carouselRef.current.style.transform = 'rotateY(-' + amount + 'deg)';
+      this.setState({ location });
+    }, 3000);
+    this.setState({ intervalId });
   }
 
   componentDidMount() {
-    const links = this.props.cards.map(obj => ({ name: obj.name, link: obj.linked }));
-    this.setState({ links });
+    setTimeout(() => {
+      this.carouselRef.current.style.transform = 'rotateY(-30deg)';
+    }, 0);
+  }
+
+  rotationTransition() {
+    const $cardRotate = document.querySelectorAll('.card-rotate');
+    let flippedCards = 0;
+    for (let i = 0; i < $cardRotate.length; i++) {
+      if ($cardRotate[i].classList.contains('is-flipped')) {
+        flippedCards++;
+      }
+    }
+    if (flippedCards > 0) return;
+    const location = this.state.location + 1;
+    const amount = location * 30;
+    this.carouselRef.current.style.transform = 'rotateY(-' + amount + 'deg)';
+    this.setState({ location });
   }
 
   render() {
     return (
       <div className="scene">
-        <div className="carousel">
+        <div className="carousel rotating" ref={this.carouselRef} onTransitionEnd={this.rotationTransition}>
           {
             this.props.cards.map(image => {
               return (
-                <div className="card" id={image.name} key={image.number} onClick={this.handleClick}>
-                  <div className="front">
-                    <img className="student-image" src={image.front}></img>
-                    <h1 className="student-name">{image.name}</h1>
-                  </div>
-                  <div className="back">
-                    <img className="logo" src={image.back}></img>
+                <div className="card" id={image.name} key={image.number}>
+                  <div className='card-rotate' id={image.number}>
+                    <div className="front column-center" onClick={this.showBack}>
+                      <img className="student-image" src={image.front}></img>
+                      <h1 className="student-name">{image.name}</h1>
+                      <h1 className="city">
+                        <i className="fa-solid fa-location-dot"></i>
+                        {image.city}
+                      </h1>
+                    </div>
+                    <div className="back" onClick={this.showFront}>
+                      <h3 className="project-name">{image.projectName}</h3>
+                      <a href={image.projectLink}>
+                        <img className="project-image" src={image.projectImage}></img>
+                      </a>
+                      <a className="linkedin-link" href={image.linked}>
+                        <img className="linkedin-icon" src={image.linkIcon}></img>
+                      </a>
+                      <a className="github-link" href={image.github}>
+                        <img className="github-icon" src={image.githubIcon}></img>
+                      </a>
+                    </div>
                   </div>
                 </div>
               );

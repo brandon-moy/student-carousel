@@ -3,6 +3,12 @@ html {
   font-family: "Source Sans Pro", sans-serif;
 }
 
+.column-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .title-image {
   display: block;
   margin: auto;
@@ -32,13 +38,37 @@ html {
   margin: 0;
 }
 
+.project-name {
+  color: white;
+  font-family: "Varela Round", sans-serif;
+  font-size: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.project-image {
+  width: 90%;
+  border-radius: 0.25rem;
+  padding-left: 0.35rem;
+}
+
+.city {
+  color: white;
+  font-size: 0.6rem;
+  width: 80%;
+  text-align: center;
+}
+
+.fa-location-dot {
+  color: white;
+  padding-right: 0.25rem;
+}
+
 .carousel {
   width: 100%;
   height: 100%;
   position: absolute;
   transform-style: preserve-3d;
-  transition: transform 1s;
-  animation: 30s infinite normal linear rotate;
+  transition: transform 3s linear;
 }
 
 .card {
@@ -47,13 +77,22 @@ html {
   height: 190px;
   left: 10px;
   top: 10px;
-  border: 3px solid white;
-  border-radius: 0.25rem;
   transform-style: preserve-3d;
 }
 
-.card:hover {
-  cursor: pointer;
+.card-rotate {
+  position: absolute;
+  width: 120px;
+  height: 190px;
+  border: 3px solid white;
+  border-radius: 0.25rem;
+  transform-style: preserve-3d;
+  transform-origin: center;
+  transition: transform 1s;
+}
+
+.card-rotate.is-flipped {
+  transform: rotateY(180deg);
 }
 
 .front {
@@ -73,14 +112,38 @@ html {
   background-color: #303b43;
 }
 
-.logo {
-  width: 100%;
-  padding-top: 2.5rem;
+.back-text {
+  color: white;
+  font-family: "Varela Round", sans-serif;
+  font-size: 0.5rem;
+  padding: 0.25rem;
 }
 
 .student-image {
-  padding-top: 1rem;
-  width: 100%;
+  margin-top: 1rem;
+  width: 90%;
+  border-radius: 50%;
+  border: 1px solid white;
+}
+
+.linkedin-icon {
+  padding-top: 4rem;
+  padding-left: 1.75rem;
+  padding-right: 1rem;
+  width: 20%;
+}
+
+.github-icon {
+  width: 20%;
+  background-color: white;
+  border-radius: 2rem;
+}
+
+.front:hover,
+.back:hover,
+.linkedin-icon:hover,
+.github-icon:hover {
+  cursor: pointer;
 }
 
 .card:nth-child(1) {
@@ -129,14 +192,4 @@ html {
 
 .card:nth-child(12) {
   transform: rotateY(330deg) translateZ(392px);
-}
-
-@keyframes rotate {
-  from {
-    transform: rotateY(0deg);
-  }
-
-  to {
-    transform: rotateY(360deg);
-  }
 }
